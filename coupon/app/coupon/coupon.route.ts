@@ -10,8 +10,8 @@ const router = Router();
 
 router.get('/', passport.authenticate('jwt', { session: false }), couponController.findAll);
 router.get('/:id', passport.authenticate('jwt', { session: false }), couponController.findOne);
-router.post('/',  multer.single('icon'), couponController.create);
-router.put('/:id' , multer.single('icon'), couponController.update);
-router.delete('/:id' , couponController.delete);
+router.post('/', passport.authenticate('jwt', { session: false }), multer.single('icon'), couponController.create);
+router.put('/:id', passport.authenticate('jwt', { session: false }), multer.single('icon'), couponController.update);
+router.delete('/:id', passport.authenticate('jwt', { session: false }), couponController.delete);
 
 export default router;
