@@ -1,10 +1,11 @@
 import passport from 'passport';
 //Strategy's
-import { jwtStrategy } from '../strategy/jwt.strategy';
+import { jwtStrategy, auth0Strategy } from '../strategy/';
 //Models
 import { User } from '../../user/models';
 
 passport.use(jwtStrategy);
+passport.use(auth0Strategy);
 
 passport.serializeUser((user: User, done) => {
     done(null, user.id);

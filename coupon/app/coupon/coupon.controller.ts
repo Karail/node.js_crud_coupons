@@ -2,12 +2,14 @@ import { Request, Response } from 'express';
 //Decorators
 import { Bind } from '../shared/decorators/';
 //Dto
-import { CouponDto } from './dto/coupon.dto';
+import { CouponDto } from './dto/';
 //Models
 import { Coupon } from './models/';
 //Services
 import awsService, { AWSService } from '../aws/aws.service';
 import fileService, { FileService } from '../shared/services/file.service';
+//Logger
+import { logger } from '../app.logger';
 
 class CouponController {
     constructor(
@@ -22,7 +24,7 @@ class CouponController {
             const coupons = await this.couponModel.findAll();
             res.json(coupons);
         } catch (ex) {
-            console.log(ex);
+            logger.error(ex.message);
             res.status(500).send(ex);
         }
     }
@@ -33,7 +35,7 @@ class CouponController {
             const coupon = await this.couponModel.findOne({ where: { id } });
             res.json(coupon);
         } catch (ex) {
-            console.log(ex);
+            logger.error(ex.message);
             res.status(500).send(ex);
         }
     }
@@ -58,7 +60,7 @@ class CouponController {
             await this.fileService.delete(req.file.path);
             res.json(coupon);
         } catch (ex) {
-            console.log(ex);
+            logger.error(ex.message);
             res.status(500).send(ex);
         }
     }
@@ -94,7 +96,7 @@ class CouponController {
             await this.fileService.delete(req.file.path);
             res.json(result);
         } catch (ex) {
-            console.log(ex);
+            logger.error(ex.message);
             res.status(500).send(ex);
         }
     }
@@ -117,7 +119,7 @@ class CouponController {
 
             res.json(result);
         } catch (ex) {
-            console.log(ex);
+            logger.error(ex.message);
             res.status(500).send(ex);
         }
     }

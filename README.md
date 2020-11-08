@@ -5,8 +5,9 @@ REST full API - CRUD Coupons
 2. Запустить командой "docker-compose up"
 
 3. Зарегистрировать пользователя, получить JWT (При запросе к купонам необходимо вложить JWT в Header->Authorization->"Bearer JWT")
-    - http://localhost:8080/user/register
+    - http://localhost:8080/auth/register
     - Поля {
+        - email: string
         - name: string
         - password: string
     }

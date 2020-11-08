@@ -2,6 +2,8 @@
 import { S3 } from './config/s3.config';
 //Services
 import fileService, { FileService } from '../shared/services/file.service';
+//Logger
+import { logger } from '../app.logger';
 
 export class AWSService {
     constructor(
@@ -26,7 +28,7 @@ export class AWSService {
             }
             return S3.upload(params).promise();
         } catch (ex) {
-            console.log(ex);
+            logger.error(ex.message);
             throw new Error(ex);
         }
     }

@@ -1,6 +1,8 @@
 version: '3'
 services:
   coupon:
+    container_name: coupon
+    # restart: always
     build:
       context: ./coupon
       dockerfile: Dockerfile
@@ -12,13 +14,13 @@ services:
     depends_on:
       - postgres
     ports:
-      - "8080:8080"
+      - "3000:3000"
 
   postgres:
+    container_name: postgres
     image: postgres:11.2-alpine
     volumes:
       - data:/var/lib/postgresql/data/
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-
 volumes:
   data:
