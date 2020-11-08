@@ -31,38 +31,38 @@ describe('Auth', () => {
                 });
         });
     });
-    // describe('/POST login', () => {
-    //     it('it should POST user login', (done) => {
-    //         chai.request(app)
-    //             .post('/auth/login')
-    //             .send({
-    //                 email: user.email,
-    //                 password: user.password
-    //             })
-    //             .end((err, res) => {
-    //                 if (err) done(err)
-    //                 res.should.have.status(200);
-    //                 res.body.should.be.a('string');
-    //                 token = res.body
-    //                 done();
-    //             });
-    //     });
-    // });
+    describe('/POST login', () => {
+        it('it should POST user login', (done) => {
+            chai.request(app)
+                .post('/auth/login')
+                .send({
+                    email: user.email,
+                    password: user.password
+                })
+                .end((err, res) => {
+                    if (err) done(err)
+                    res.should.have.status(200);
+                    res.body.should.be.a('string');
+                    token = res.body
+                    done();
+                });
+        });
+    });
 });
 
-// describe('Coupon', () => {
-//     describe('/GET coupon', () => {
-//         it('it should GET all the coupons', (done) => {
-//             chai.request(app)
-//                 .get('/coupon/')
-//                 .set({ Authorization: `Bearer ${token}` })
-//                 .end((err, res) => {
-//                     if (err) done(err)
-//                     res.should.have.status(200);
-//                     res.body.should.be.a('array');
-//                     res.body.length.should.be.eql(0);
-//                     done();
-//                 });
-//         });
-//     });
-// });
+describe('Coupon', () => {
+    describe('/GET coupon', () => {
+        it('it should GET all the coupons', (done) => {
+            chai.request(app)
+                .get('/coupon/')
+                .set({ Authorization: `Bearer ${token}` })
+                .end((err, res) => {
+                    if (err) done(err)
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(0);
+                    done();
+                });
+        });
+    });
+});

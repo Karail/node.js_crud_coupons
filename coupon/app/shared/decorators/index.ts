@@ -1,1 +1,1 @@
-export { Bind } from './bind.decorator'
+export { Bind } from './bind.decorator';
